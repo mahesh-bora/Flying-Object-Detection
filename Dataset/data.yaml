@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['aircraft', 'bird', 'drone', 'hot air ballon']
+
+roboflow:
+  workspace: patrick-o-gorman
+  project: flying-objects-ob-100
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/patrick-o-gorman/flying-objects-ob-100/dataset/3
