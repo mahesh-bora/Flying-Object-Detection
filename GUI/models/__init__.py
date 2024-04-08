@@ -13,7 +13,7 @@ colors = [
 
 
 class Model:
-    def __init__(self, variant='best.pt'):
+    def __init__(self, variant='YOLOv8m.pt'):
         self.model = YOLO('models/' + variant)
         self.CLASS_NAMES_DICT = self.model.model.names
 
@@ -72,22 +72,27 @@ class Model:
 
                 sink.write_frame(frame)
     
+
     def predict_image(self, image_path):
-            # Load the image
-            image = cv2.imread(image_path)
-            results = self.model(image)
-            # Perform object detection (this is just a placeholder, replace with your actual detection logic)
-            detections = Detections(
-                    xyxy=results[0].boxes.xyxy.cpu().numpy(),
-                    confidence=results[0].boxes.conf.cpu().numpy(),
-                    class_id=results[0].boxes.cls.cpu().numpy().astype(int)
-                )
-
-            # Draw bounding boxes and labels on the image
-            for detection in detections:
-                x1, y1, x2, y2, label, confidence = detection
-                cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                cv2.putText(image, f'{label} {confidence:.2f}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-
-            # Return the image with detections
-            return image
+        # Load the image
+        image = cv2.imread(image_path)
+        results = self.model(image)
+        # Perform object detection (this is just a placeholder, replace with your actual detection logic)
+        bounding_boxes = []
+    
+        for result in results:
+            for box in result.boxes:
+                class_id = int(box.cls[0])  # Convert class ID to integer
+                class_name = result.names[class_id]  # Access class name using class ID
+                box_coords = [round(coord) for coord in box.xyxy[0].tolist()]
+                conf = round(float(box.conf[0]), 2)  # Convert tensor to float before rounding
+                bounding_boxes.append((class_name, conf, box_coords))
+    
+        # Draw bounding boxes and labels on the image
+        if bounding_boxes:
+            for class_name, conf, box_coords in bounding_boxes:
+                cv2.rectangle(image, (box_coords[0], box_coords[1]), (box_coords[2], box_coords[3]), (0, 255, 0), 2)
+                cv2.putText(image, f'{class_name} {conf:.2f}', (box_coords[0], box_coords[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+    
+        # Return the image with detections
+        return image
