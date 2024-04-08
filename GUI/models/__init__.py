@@ -40,38 +40,44 @@ class Model:
 
     def predict_video(self, source: str, target: str):
         generator = get_video_frames_generator(source)
-        box_annotator = BoxAnnotator(color=create_colorpalette(hex_to_rgb(colors)), thickness=4, text_thickness=1,
-                                     text_scale=1)
+        box_annotator = BoxAnnotator(color=create_colorpalette(hex_to_rgb(colors)), thickness=4, text_thickness=1, text_scale=1)
         video_info = VideoInfo.from_video_path(source)
         total, current = video_info.total_frames, 0
         progress_text = f'Frames: {current}/{total}, {round(100*current/total, 1)}% | The video is being processed!'
         progress_bar = st.progress(current/total, progress_text)
+
         with VideoSink(target, video_info) as sink:
             for frame in generator:
                 progress_text = f'Frames: {current}/{total}, {round(100*current/total, 1)}% | The video is being processed!'
                 current += 1
                 progress_bar.progress(current/total, 'Completed!' if current == total else progress_text)
                 results = self.model(frame)
-
                 detections = Detections(
                     xyxy=results[0].boxes.xyxy.cpu().numpy(),
                     confidence=results[0].boxes.conf.cpu().numpy(),
                     class_id=results[0].boxes.cls.cpu().numpy().astype(int)
                 )
                 labels = [
-                    f'{self.CLASS_NAMES_DICT[class_id]} {confidence:0.2f}'
-                    for _, _, confidence, class_id, _,
-                    in detections
+                    f'{self.CLASS_NAMES_DICT[class_id]} {confidence:0.2f} ({x1:.0f}, {y1:.0f}, {x2:.0f}, {y2:.0f})'
+                    for (x1, y1, x2, y2), confidence, class_id in zip(detections.xyxy, detections.confidence, detections.class_id)
                 ]
+
+                # Get the center of the frame
+                frame_height, frame_width, _ = frame.shape
+                frame_center_x = int(frame_width // 2)
+                frame_center_y = int(frame_height // 2)
+
+                # Draw lines from the center of the frame to the center of each detected object
+                for (x1, y1, x2, y2) in detections.xyxy:
+                    object_center_x = int((x1 + x2) // 2)
+                    object_center_y = int((y1 + y2) // 2)
+                    frame = cv2.line(frame, (frame_center_x, frame_center_y), (object_center_x, object_center_y), (0, 255, 0), 2)
 
                 key = cv2.waitKey(1)
                 if key == 27:  # ASCII code for "Esc" key
                     break
-
                 frame = box_annotator.annotate(frame, detections=detections, labels=labels)
-
                 sink.write_frame(frame)
-    
 
     def predict_image(self, image_path):
         # Load the image
