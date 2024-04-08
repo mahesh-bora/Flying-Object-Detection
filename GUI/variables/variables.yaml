@@ -12,3 +12,5 @@ PATHS:
 MODELS:
   - YOLOv8m.pt
   - YOLOv8s.pt
+  - YOLOv5m.pt
+  - YOLOv5s.pt
