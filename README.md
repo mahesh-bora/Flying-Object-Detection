@@ -62,10 +62,11 @@ $ streamlit run app.py
 6. Upload a video if **Video File** mode is selected.
 7. Click the ```Start Detecting``` button.
 ## Use Cases
-- It can be used to count cars entered and left a parking lot.
-- To count live stock.
-- Counting people that entered and left a shop.
-- Other than counting, it can be used to detect any motion in a frame.
+- Airport security
+- Border patrol
+- Military defense
+- Event security
+- Wildlife conservation
 - And much more.
 ## Contributing
 Contributions are welcomed and appreciated.
