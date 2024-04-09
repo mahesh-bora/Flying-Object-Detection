@@ -1,16 +1,16 @@
 # Object Detection w/ YOLO Models
 This as an implementation of **Ultralytics YOLO** for object detection.
 ## Introduction
-**YOLO v8** is _state of the art_ model for computer vision tasks from **[Ultralytics](https://www.ultralytics.com)**. In this project, I have implemented it for _object detection_ task.
+**YOLO** is _state of the art_ model for computer vision tasks from **[Ultralytics](https://www.ultralytics.com)**. In this project, We have implemented it for _flying object detection_ task.
 ## Features
 1. Real time object detection via Webcam
-2. Object detection in an uploaded video file
+2. Object detection in an uploaded video/image file
 ## Technologies Used
-1. Ultralytics YOLO v8 (Model)
+1. Ultralytics YOLO v8m/v8s/v5m/v5s (Model)
 2. OpenCV (Video Processing)
 3. Roboflow Supervision (Video Processing)
 4. Streamlit (UI)
-## Project Structure
+## Project Structure - GUI
 ```
 ├─── models/
 │     └─── __init__.py
@@ -31,14 +31,15 @@ This as an implementation of **Ultralytics YOLO** for object detection.
 ```
 ## Dependencies
 ```text
-streamlit~=1.26.0
-ultralytics~=8.1.1
-supervision~=0.17.1
-opencv-python~=4.9.0.80
-pathlib~=1.0.1
-pillow~=9.4.0
-tqdm~=4.65.0
-pyyaml~=6.0
+opencv_python==4.9.0.80
+opencv_python_headless==4.8.1.78
+Pillow==9.4.0
+PyYAML==6.0.1
+streamlit==1.26.0
+supervision==0.17.1
+ultralytics==8.1.3
+moviepy
+supervision
 ```
 ## How to Install and Run
 1. Clone the repository.
@@ -47,7 +48,7 @@ $ git clone https://github/repository/link
 ```
 2. Get into the Project Directory
 ```
-$ cd Object-Detection-w-YOLOv8
+$ cd GUI
 ```
 3. Install the required dependencies.
 ```
@@ -71,7 +72,7 @@ Contributions are welcomed and appreciated.
 ## License
 This project is released under 'MIT License'.
 ## Conclusion
-In conclusion, this project leverages the power of Ultralytics YOLO v8 
-for real-time object detection. With features like webcam-based detection
-and processing of uploaded video files, it offers a versatile solution for
+In conclusion, this project leverages the power of Ultralytics YOLO models 
+for real-time flying object detection. With features like webcam-based detection
+and processing of uploaded video and image files, it offers a versatile solution for
 various applications.
