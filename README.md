@@ -1,4 +1,4 @@
-# Object Detection w/ YOLO Models
+# Flying Object Detection w/ YOLO Models
 This as an implementation of **Ultralytics YOLO** for object detection.
 ## Introduction
 **YOLO** is _state of the art_ model for computer vision tasks from **[Ultralytics](https://www.ultralytics.com)**. In this project, We have implemented it for _flying object detection_ task.
@@ -59,8 +59,9 @@ $ pip install -r requirements.txt
 $ streamlit run app.py
 ```
 5. Choose the mode and model.
-6. Upload a video if **Video File** mode is selected.
-7. Click the ```Start Detecting``` button.
+6. Upload an image if **Image File** mode is selected.
+7. Upload a video if **Video File** mode is selected.
+8. Click the ```Start Detecting``` button.
 ## Use Cases
 - Airport security
 - Border patrol
