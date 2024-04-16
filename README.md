@@ -5,6 +5,20 @@ This as an implementation of **Ultralytics YOLO** for object detection.
 ## Features
 1. Real time object detection via Webcam
 2. Object detection in an uploaded video/image file
+
+## 👨‍💻: Screenshots
+<div align="left">
+ 
+| Inital Screen | Choosing Model | 
+| :---         |     :---      |       
+| <img src="https://github.com/mahesh-bora/Flying-Object-Detection/assets/101460679/871a2184-33db-4865-a8da-cc2ec4cf3ee6" width="500" height="auto" />  | <img src="https://github.com/mahesh-bora/Flying-Object-Detection/assets/101460679/84173db5-549a-48ef-9110-fb922a70c8c9" width="500" height="auto" />    
+
+| Image Based Detection | Video Based Detection | 
+| :---         |     :---      | 
+ <img src="https://github.com/mahesh-bora/Flying-Object-Detection/assets/101460679/a2d26522-4108-41de-b22f-1646f39f5c74" width="500" height="auto" />    | <img src="https://github.com/mahesh-bora/Flying-Object-Detection/assets/101460679/e1af569a-9474-4cb7-a5ec-3cd9efadbeab" width="500" height="auto" /> 
+
+</div>
+
 ## Technologies Used
 1. Ultralytics YOLO v8m/v8s/v5m/v5s (Model)
 2. OpenCV (Video Processing)
