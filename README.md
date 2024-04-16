@@ -24,6 +24,7 @@ This as an implementation of **Ultralytics YOLO** for object detection.
 2. OpenCV (Video Processing)
 3. Roboflow Supervision (Video Processing)
 4. Streamlit (UI)
+
 ## Project Structure - GUI
 ```
 ├─── models/
@@ -43,18 +44,7 @@ This as an implementation of **Ultralytics YOLO** for object detection.
 ├─── LICENSE
 └─── .gitignore
 ```
-## Dependencies
-```text
-opencv_python==4.9.0.80
-opencv_python_headless==4.8.1.78
-Pillow==9.4.0
-PyYAML==6.0.1
-streamlit==1.26.0
-supervision==0.17.1
-ultralytics==8.1.3
-moviepy
-supervision
-```
+
 ## How to Install and Run
 1. Clone the repository.
 ```
@@ -76,6 +66,7 @@ $ streamlit run app.py
 6. Upload an image if **Image File** mode is selected.
 7. Upload a video if **Video File** mode is selected.
 8. Click the ```Start Detecting``` button.
+
 ## Use Cases
 - Airport security
 - Border patrol
@@ -83,12 +74,24 @@ $ streamlit run app.py
 - Event security
 - Wildlife conservation
 - And much more.
-## Contributing
-Contributions are welcomed and appreciated.
+
 ## License
-This project is released under 'MIT License'.
+
+Distributed under the MIT License. See [License](https://choosealicense.com/licenses/mit/) for more information.
+
+Please adhere to this project's `code of conduct`.
+
+## Contributors
+
+- [Mahesh Bora](https://www.github.com/mahesh-bora)
+- [Maitri Markandeywar](https://www.github.com/Maitrimark26)
+- [Lakshay Bogal](https://www.github.com/lakshaybogal)
+- [Tanisha Sen](https://www.github.com/Tani-02)
+
+
 ## Conclusion
 In conclusion, this project leverages the power of Ultralytics YOLO models 
 for real-time flying object detection. With features like webcam-based detection
 and processing of uploaded video and image files, it offers a versatile solution for
 various applications.
+
